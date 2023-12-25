@@ -55,3 +55,9 @@ pokeApi.getPokemons = (offset = 0, limit = 8) => {
     .then((detailRequests) => Promise.all(detailRequests))
     .then((pokemonsDetails) => pokemonsDetails)
 }
+
+pokeApi.getPokemonProfile = (pokemonId) => {
+            return fetch(`${baseUrl}pokemon/${pokemonId}`)
+            .then((response) => response.json())
+            .then((pokemonDetails) => convertPokeApiDetailToPokemonProfile(pokemonDetails))
+}
